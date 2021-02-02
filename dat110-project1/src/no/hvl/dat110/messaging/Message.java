@@ -4,11 +4,13 @@ import java.util.Arrays;
 
 import no.hvl.dat110.TODO;
 
+
 public class Message {
 
 	private byte[] payload;
 
-	public Message(byte[] payload) {
+	public Message(byte[] payload)
+	{
 		this.payload = payload; // TODO: check for length within boundary
 	}
 
@@ -16,7 +18,8 @@ public class Message {
 		super();
 	}
 
-	public byte[] getData() {
+	public byte[] getData()
+	{
 		return this.payload; 
 	}
 
@@ -37,11 +40,13 @@ public class Message {
 
 	public void decapsulate(byte[] received) {
 
-		// TODO
 		// decapsulate the data contained in the received byte array and store it 
 		// in the payload of this message
-		
-		throw new UnsupportedOperationException(TODO.method());
+
+		this.payload = new byte[received[0]];
+		for (int i = 0; i < received[0]; i++) {
+			this.payload[i]=received[i+1];
+		}
 		
 	}
 }
