@@ -25,17 +25,25 @@ public class Message {
 
 	public byte[] encapsulate() {
 		
-		byte[] encoded = null;
-		
+		byte[] encoded = new byte[128];
+		byte size = (byte)this.payload.length;
+
+
+
+		encoded[0] = size;
+		for (int i = 0; i < size ; i++) {
+			encoded[i+1] = this.payload[i];
+		}
+
 		// TODO
 		// encapulate/encode the payload of this message in the
 		// encoded byte array according to message format
-		
-		if (true)
-		   throw new UnsupportedOperationException(TODO.method());
+
+
+
 
 		return encoded;
-		
+
 	}
 
 	public void decapsulate(byte[] received) {
