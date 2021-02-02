@@ -33,13 +33,13 @@ public class Connection {
 	public void send(Message message) {
 
 		// TODO
-
+		System.out.println("Starting send process on socket: " + this.socket.toString());
 		try {
 			outStream.write(message.encapsulate());
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-
+		System.out.println("Send process complete on socket: " + this.socket.toString());
 		// encapsulate the data contained in the message and write to the output stream
 		// Hint: use the encapsulate method on the message
 
@@ -51,20 +51,27 @@ public class Connection {
 		Message message;
 		byte[] recvbuf;
 
+		System.out.println("Starting receive process on socket: " + this.socket.toString());
+
 		// TODO
 		// read a segment (128 bytes) from the input stream and decapsulate into message
 		// Hint: create a new Message object and use the decapsulate method
 		Message received = null;
 
 		try {
-			recvbuf = inStream.readAllBytes();
+
+			recvbuf = inStream.readNBytes(128);
+			System.out.println("inStream received");
 			received = new Message(recvbuf);
 			received.decapsulate(recvbuf);
+
+			System.out.println("Message decapsulated");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 		message = received;
 
+		System.out.println("Receive process completed on socket: " + this.socket.toString());
 		return message;
 
 	}
