@@ -33,6 +33,7 @@ public class Connection {
 	public void send(Message message) {
 
 		// TODO
+
 		try {
 			outStream.write(message.encapsulate());
 		} catch (IOException e) {
@@ -53,10 +54,16 @@ public class Connection {
 		// TODO
 		// read a segment (128 bytes) from the input stream and decapsulate into message
 		// Hint: create a new Message object and use the decapsulate method
-		recvbuf = 
-		if (true) {
-			throw new RuntimeException("not yet implemented");
+		Message received = null;
+
+		try {
+			recvbuf = inStream.readAllBytes();
+			received = new Message(recvbuf);
+			received.decapsulate(recvbuf);
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
+		message = received;
 
 		return message;
 
