@@ -61,11 +61,11 @@ public class Connection {
 		try {
 
 			recvbuf = inStream.readNBytes(128);
-			System.out.println("inStream received");
+
 			received = new Message(recvbuf);
 			received.decapsulate(recvbuf);
 
-			System.out.println("Message decapsulated");
+
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
