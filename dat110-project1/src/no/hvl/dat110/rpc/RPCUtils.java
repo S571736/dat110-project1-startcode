@@ -41,13 +41,10 @@ public class RPCUtils {
 
     public static byte[] marshallVoid(byte rpcid) {
 
-        byte[] encoded;
 
-
-        encoded = new byte[1];
+        byte[] encoded = new byte[1];
 
         encoded[0] = rpcid;
-
 
         return encoded;
 
@@ -56,6 +53,7 @@ public class RPCUtils {
     public static void unmarshallVoid(byte[] data) {
 
 
+        return;
         // TODO: unmarshall void type - Excuse me wtf?
     }
 
@@ -96,7 +94,7 @@ public class RPCUtils {
 
         int decoded;
 
-        // TODO: unmarshall integer contained in data
+
         decoded = Byte.toUnsignedInt(data[1]);
 
         return decoded;

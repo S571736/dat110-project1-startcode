@@ -32,7 +32,7 @@ public class Connection {
 
 	public void send(Message message) {
 
-		// TODO
+
 		System.out.println("Starting send process on socket: " + this.socket.toString());
 		try {
 			outStream.write(message.encapsulate());
@@ -53,7 +53,7 @@ public class Connection {
 
 		System.out.println("Starting receive process on socket: " + this.socket.toString());
 
-		// TODO
+
 		// read a segment (128 bytes) from the input stream and decapsulate into message
 		// Hint: create a new Message object and use the decapsulate method
 		Message received = null;

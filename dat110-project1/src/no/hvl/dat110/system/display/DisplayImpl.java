@@ -1,6 +1,7 @@
 package no.hvl.dat110.system.display;
 
 import no.hvl.dat110.TODO;
+import no.hvl.dat110.rpc.RPCClient;
 import no.hvl.dat110.rpc.RPCImpl;
 import no.hvl.dat110.rpc.RPCUtils;
 
@@ -13,16 +14,22 @@ public class DisplayImpl implements RPCImpl {
 	public byte[] invoke(byte[] request) {
 		
 		byte[] reply;
-		byte rpcid;
-		
-		// TODO: 
+		byte rpcid = request[0];
+
+		String messageStr = RPCUtils.unmarshallString(request);
+
+
+
+		write(messageStr);
+
+		reply = RPCUtils.marshallVoid(rpcid);
+
+
+
+
 		// implement unmarshalling, call, and marshall for write RPC method
 		// look at how this is done int he SensorImpl for the read method
-		
-		if (true) {
-			throw new UnsupportedOperationException(TODO.method());
-		}
-		
+
 		return reply;
 	}
 }
