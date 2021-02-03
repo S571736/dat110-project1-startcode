@@ -41,7 +41,7 @@ public class Controller {
         displayclient.register(stopdisplay);
         sensorclient.register(stopsensor);
 
-        // TODO:
+
         // loop while reading from sensor and write to display via RPC
 
         for (int i = 0; i < N; i++) {
