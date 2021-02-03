@@ -1,106 +1,105 @@
 package no.hvl.dat110.rpc;
 
+import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 
 import no.hvl.dat110.TODO;
 
 public class RPCUtils {
 
-	// Utility methods for marshalling and marshalling of parameters and return values
-	// in RPC request and RPC responses
-	// data bytearrays and return byte arrays is according to the 
-	// RPC message syntax [rpcid,parameter/return value]
-	
-	public static byte[] marshallString(byte rpcid, String str) {
+    // Utility methods for marshalling and marshalling of parameters and return values
+    // in RPC request and RPC responses
+    // data bytearrays and return byte arrays is according to the
+    // RPC message syntax [rpcid,parameter/return value]
 
-		byte[] encoded;
+    public static byte[] marshallString(byte rpcid, String str) {
 
-		// TODO: marshall RPC identifier and string into byte array
+        byte[] encoded;
 
-		if (true) {
-			throw new UnsupportedOperationException(TODO.method());
-		}
 
-		return encoded;
-	}
+        encoded = new byte[str.length()+1];
+        encoded[0] = rpcid;
 
-	public static String unmarshallString(byte[] data) {
+        for (int i = 0; i < str.length(); i++) {
+            encoded[i + 1] = (byte) str.charAt(i);
+        }
 
-		String decoded;
+        return encoded;
+    }
 
-		// TODO: unmarshall String contained in data into decoded
+    public static String unmarshallString(byte[] data) {
 
-		if (true) {
-			throw new UnsupportedOperationException(TODO.method());
-		}
+        String decoded;
 
-		return decoded;
-	}
+        decoded = new String(data, StandardCharsets.UTF_8);
 
-	public static byte[] marshallVoid(byte rpcid) {
+        decoded = decoded.substring(1);
 
-		byte[] encoded;
 
-		// TODO: marshall RPC identifier in case of void type
+        return decoded;
+    }
 
-		if (true) {
-			throw new UnsupportedOperationException(TODO.method());
-		}
+    public static byte[] marshallVoid(byte rpcid) {
 
-		return encoded;
+        byte[] encoded;
 
-	}
 
-	public static void unmarshallVoid(byte[] data) {
+        encoded = new byte[1];
 
-		// TODO: unmarshall void type
-	}
+        encoded[0] = rpcid;
 
-	public static byte[] marshallBoolean(byte rpcid, boolean b) {
 
-		byte[] encoded = new byte[2];
+        return encoded;
 
-		encoded[0] = rpcid;
+    }
 
-		if (b) {
-			encoded[1] = 1;
-		} else {
-			encoded[1] = 0;
-		}
+    public static void unmarshallVoid(byte[] data) {
 
-		return encoded;
-	}
 
-	public static boolean unmarshallBoolean(byte[] data) {
+        // TODO: unmarshall void type - Excuse me wtf?
+    }
 
-		return (data[1] > 0);
+    public static byte[] marshallBoolean(byte rpcid, boolean b) {
 
-	}
+        byte[] encoded = new byte[2];
 
-	public static byte[] marshallInteger(byte rpcid, int x) {
+        encoded[0] = rpcid;
 
-		byte[] encoded;
+        if (b) {
+            encoded[1] = 1;
+        } else {
+            encoded[1] = 0;
+        }
 
-		// TODO: marshall RPC identifier and string into byte array
+        return encoded;
+    }
 
-		if (true) {
-			throw new UnsupportedOperationException(TODO.method());
-		}
+    public static boolean unmarshallBoolean(byte[] data) {
 
-		return encoded;
-	}
+        return (data[1] > 0);
 
-	public static int unmarshallInteger(byte[] data) {
+    }
 
-		int decoded;
+    public static byte[] marshallInteger(byte rpcid, int x) {
 
-		// TODO: unmarshall integer contained in data
+        byte[] encoded;
 
-		if (true) {
-			throw new UnsupportedOperationException(TODO.method());
-		}
+        encoded = new byte[2];
 
-		return decoded;
+        encoded[0] = rpcid;
+        encoded[1] = (byte) x;
 
-	}
+        return encoded;
+    }
+
+    public static int unmarshallInteger(byte[] data) {
+
+        int decoded;
+
+        // TODO: unmarshall integer contained in data
+        decoded = Byte.toUnsignedInt(data[1]);
+
+        return decoded;
+
+    }
 }
