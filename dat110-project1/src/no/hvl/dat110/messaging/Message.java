@@ -33,7 +33,6 @@ public class Message {
             encoded[i + 1] = this.payload[i];
         }
 
-        
         // encapulate/encode the payload of this message in the
         // encoded byte array according to message format
 

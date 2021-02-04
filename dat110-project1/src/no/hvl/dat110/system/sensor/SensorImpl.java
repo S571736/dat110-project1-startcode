@@ -13,6 +13,8 @@ public class SensorImpl implements RPCImpl {
 
 		double temp = RANGE * Math.sin(seconds / 1000);
 
+
+
 		return (int) Math.ceil(temp);
 	}
 	

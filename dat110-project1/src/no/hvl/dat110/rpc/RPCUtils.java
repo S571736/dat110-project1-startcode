@@ -94,8 +94,7 @@ public class RPCUtils {
 
         int decoded;
 
-
-        decoded = Byte.toUnsignedInt(data[1]);
+        decoded = data[1] & 0xFF;
 
         return decoded;
 
