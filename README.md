@@ -1,5 +1,7 @@
 ## DAT110 - Project 1: Socket Programming and RPC middleware
 
+![Screenshot of successful tests](Test_Success.png)
+
 The tasks related to this project will be part of the lab exercises in the next two weeks.
 
 ### Organisation
